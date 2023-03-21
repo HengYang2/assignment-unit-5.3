@@ -26,6 +26,21 @@ function showCollection( collection ) {
         console.log(album.title + " by " + album.artist + ", " + "published in " + album.yearPublished);
     }
 }
-
-
 showCollection(collection);
+
+function findByArtist( artist ) {
+    let array = [];
+    for (const album of collection) {
+        if (album.artist === artist) {
+            array.push(album);
+        }
+    }
+    return array;
+}
+
+//Passing artist that does not exist as argument.
+console.log('findByArtist() Results:', findByArtist('Unknown')); 
+//Passing artist that exists only once as argument.
+console.log('findByArtist() Results:', findByArtist('Jaguars')); 
+//Passing artist that exists twice as argument.
+console.log('findByArtist() Results:', findByArtist('Magical Elves')); 
