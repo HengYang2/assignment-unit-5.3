@@ -17,6 +17,15 @@ console.log("Testing addToCollection():", addToCollection( 'Yellow Bells', 'Pres
 console.log("Testing addToCollection():", addToCollection( 'Blue Clouds', 'Skyscrapers', '2010'));
 console.log("Testing addToCollection():", addToCollection( 'Red Boots', 'Jaguars', '1989'));
 console.log("Testing addToCollection():", addToCollection( 'Silver Night', 'Still In School', '1996'));
-console.log("Testing addToCollection():", addToCollection( 'Brown Dirt', 'Magical Eleves', '2011'));
+console.log("Testing addToCollection():", addToCollection( 'Brown Dirt', 'Magical Elves', '2011'));
 console.log('Checking updated array:', collection);
 
+function showCollection( collection ) {
+    console.log('Total number of items in array:', collection.length);
+    for (const album of collection) {
+        console.log(album.title + " by " + album.artist + ", " + "published in " + album.yearPublished);
+    }
+}
+
+
+showCollection(collection);
