@@ -44,3 +44,22 @@ console.log('findByArtist() Results:', findByArtist('Unknown'));
 console.log('findByArtist() Results:', findByArtist('Jaguars')); 
 //Passing artist that exists twice as argument.
 console.log('findByArtist() Results:', findByArtist('Magical Elves')); 
+
+//Stretch Goal
+function search( artist, yearPublished) {
+    let array = [];
+    if (artist == undefined || yearPublished == undefined) {
+        return collection;
+    }
+    for (const album of collection) {
+        if (album.artist === artist && album.yearPublished === yearPublished) {
+            array.push(album);
+        }
+    }
+    return array;
+}
+
+//Testing
+console.log('search() - expect array with 1 object:', search('Magical Elves', '2011'));
+console.log('search() - expect empty array:', search('Fantasy Gnomes', '2011'));
+console.log('search() - no arguments given, should expect whole collection array:', search());
