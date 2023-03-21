@@ -35,7 +35,10 @@ console.log('Checking updated array:', collection);
 function showCollection( collection ) {
     console.log('Total number of items in array:', collection.length);
     for (const album of collection) {
-        console.log(album.title + " by " + album.artist + ", " + "published in " + album.yearPublished);
+        console.log(album.title + " by " + album.artist + ", " + "published in " + album.yearPublished + ":");
+        for (let i=0; i<album.tracks.length; i++) {
+            console.log( i+1 + '. ' + album.tracks[i].trackName + ': ' + album.tracks[i].duration);
+        }
     }
 }
 showCollection(collection);
