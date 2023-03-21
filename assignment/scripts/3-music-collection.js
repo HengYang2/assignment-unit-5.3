@@ -65,7 +65,13 @@ function search( artist, yearPublished, trackName) {
         return collection;
     }
     for (const album of collection) {
-        if (album.artist === artist && album.yearPublished === yearPublished && album.trackName == trackName) {
+        for (const track of album.tracks) {
+            if (track.trackName == trackName) {
+                array.push(album);
+                return array;
+            }
+        }
+        if (album.artist === artist && album.yearPublished === yearPublished) {
             array.push(album);
         }
     }
@@ -73,7 +79,8 @@ function search( artist, yearPublished, trackName) {
 }
 
 //Testing
-console.log('search() - expect array with 1 object:', search('Magical Elves', '2011', ''));
-console.log('search() - expect empty array:', search('Fantasy Gnomes', '2011'));
+console.log('search() - expect array with 1 object:', search('Magical Elves', '2011', 'Apples'));
+console.log('search() - expect empty array:', search('Fantasy Gnomes', '2011', 'Pears'));
 console.log('search() - no arguments given, should expect whole collection array:', search());
+console.log('search() - expect array with album "Green Trees" because "Apples" track was found:', search('Fantasy Gnomes', '2011', 'Apples'));
 
