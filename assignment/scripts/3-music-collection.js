@@ -11,5 +11,12 @@ function addToCollection( title, artist, yearPublished) {
     return newObject;
 }
 
-console.log("testing addToCollection():", addToCollection( 'Best-Song', 'Unknown', '1987'));
-console.log('checking updated array:', collection);
+//Testing addToCollection() function:
+console.log("Testing addToCollection():", addToCollection( 'Green Trees', 'Magical Elves', '1990'));
+console.log("Testing addToCollection():", addToCollection( 'Yellow Bells', 'Presents For You', '1996'));
+console.log("Testing addToCollection():", addToCollection( 'Blue Clouds', 'Skyscrapers', '2010'));
+console.log("Testing addToCollection():", addToCollection( 'Red Boots', 'Jaguars', '1989'));
+console.log("Testing addToCollection():", addToCollection( 'Silver Night', 'Still In School', '1996'));
+console.log("Testing addToCollection():", addToCollection( 'Brown Dirt', 'Magical Eleves', '2011'));
+console.log('Checking updated array:', collection);
+
