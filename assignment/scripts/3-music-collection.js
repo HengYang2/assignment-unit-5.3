@@ -30,7 +30,7 @@ console.log("Testing addToCollection():", addToCollection( 'Red Boots', 'Jaguars
 console.log("Testing addToCollection():", addToCollection( 'Silver Night', 'Still In School', '1996', reusableTracksArray));
 console.log("Testing addToCollection():", addToCollection( 'Brown Dirt', 'Magical Elves', '2011', reusableTracksArray));
 console.log('Checking updated array:', collection);
-
+addToCollection( 'SONG NAME', 'Ray Charles', '1957', reusableTracksArray);
 
 function showCollection( collection ) {
     console.log('Total number of items in array:', collection.length);
@@ -62,28 +62,39 @@ console.log('findByArtist() Results:', findByArtist('Jaguars'));
 console.log('findByArtist() Results:', findByArtist('Magical Elves')); 
 
 //Stretch Goal
-function search( artist, yearPublished, trackName) {
+function search( criteria, trackName ) {
     let array = [];
-    if (artist == undefined || yearPublished == undefined || trackName == undefined) {
+    if (criteria == undefined) {
         return collection;
-    }
-    for (const album of collection) {
-        for (const track of album.tracks) {
-            if (track.trackName == trackName) {
-                array.push(album);
-                return array;
+    } else if (  ) {
+        for (const album of collection) {
+            for (const track of album.tracks) {
+                if (track.trackName == trackName) {
+                    array.push(album);
+                }
             }
         }
-        if (album.artist === artist && album.yearPublished === yearPublished) {
-            array.push(album);
+        return array;
+    } else {
+        for (const album of collection) {
+            if (criteria.artist == album.artist && criteria.yearPublished == album.yearPublished) {
+                array.push(album);
+            }
         }
+        return array;
     }
-    return array;
 }
 
+let criteria = {
+    artist: 'Ray Charles',
+    yearPublished: '1957',
+}
+
+
 //Testing
-console.log('search() - expect array with 1 object:', search('Magical Elves', '2011', 'Apples'));
-console.log('search() - expect empty array:', search('Fantasy Gnomes', '2011', 'Pears'));
-console.log('search() - no arguments given, should expect whole collection array:', search());
-console.log('search() - expect array with album "Green Trees" because "Apples" track was found:', search('Fantasy Gnomes', '2011', 'Apples'));
+console.log( search(criteria, 'SONG NAME'));
+console.log( search());
+// console.log('search() - expect empty array:', search('Fantasy Gnomes', '2011', 'Pears'));
+// console.log('search() - no arguments given, should expect whole collection array:', search());
+// console.log('search() - expect array with album "Green Trees" because "Apples" track was found:', search('Fantasy Gnomes', '2011', 'Apples'));
 
