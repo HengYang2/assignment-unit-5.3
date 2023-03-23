@@ -13,7 +13,7 @@ function addToCollection( title, artist, yearPublished, tracks) {
 }
 
 let song1 = {
-    trackName: 'Bush',
+    trackName: 'SONG NAME',
     duration: '2:00',
 };
 let song2 = {
@@ -21,6 +21,7 @@ let song2 = {
     duration: '1:30',
 };
 let reusableTracksArray = [song1, song2];
+let emptyTracksArray = [];
 
 //Testing addToCollection() function:
 console.log("Testing addToCollection():", addToCollection( 'Green Trees', 'Magical Elves', '1990', reusableTracksArray));
@@ -63,10 +64,11 @@ console.log('findByArtist() Results:', findByArtist('Magical Elves'));
 
 //Stretch Goal
 function search( criteria, trackName ) {
+
     let array = [];
     if (criteria == undefined) {
         return collection;
-    } else if (  ) {
+    } else if ( trackName != undefined ) {
         for (const album of collection) {
             for (const track of album.tracks) {
                 if (track.trackName == trackName) {
@@ -88,7 +90,9 @@ function search( criteria, trackName ) {
 let criteria = {
     artist: 'Ray Charles',
     yearPublished: '1957',
+    tracks: ['SONG NAME'],
 }
+
 
 
 //Testing
