@@ -13,7 +13,7 @@ function addToCollection( title, artist, yearPublished, tracks) {
 }
 
 let song1 = {
-    trackName: 'SONG NAME',
+    trackName: 'Pears',
     duration: '2:00',
 };
 let song2 = {
@@ -21,7 +21,8 @@ let song2 = {
     duration: '1:30',
 };
 let reusableTracksArray = [song1, song2];
-let emptyTracksArray = [];
+let rayCharlesTracksArray = [{trackName: 'Best Song Ever', duration: '1:00',}];
+
 
 //Testing addToCollection() function:
 console.log("Testing addToCollection():", addToCollection( 'Green Trees', 'Magical Elves', '1990', reusableTracksArray));
@@ -31,7 +32,8 @@ console.log("Testing addToCollection():", addToCollection( 'Red Boots', 'Jaguars
 console.log("Testing addToCollection():", addToCollection( 'Silver Night', 'Still In School', '1996', reusableTracksArray));
 console.log("Testing addToCollection():", addToCollection( 'Brown Dirt', 'Magical Elves', '2011', reusableTracksArray));
 console.log('Checking updated array:', collection);
-addToCollection( 'SONG NAME', 'Ray Charles', '1957', reusableTracksArray);
+addToCollection( 'Ray Charles Album', 'Ray Charles', '1957', rayCharlesTracksArray);
+
 
 function showCollection( collection ) {
     console.log('Total number of items in array:', collection.length);
@@ -56,26 +58,29 @@ function findByArtist( artist ) {
 }
 
 //Passing artist that does not exist as argument.
-console.log('findByArtist() Results:', findByArtist('Unknown')); 
+console.log('findByArtist() - Should expect empty array:', findByArtist('Unknown')); 
 //Passing artist that exists only once as argument.
-console.log('findByArtist() Results:', findByArtist('Jaguars')); 
+console.log('findByArtist() - Should expect 1 album by Jaguars:', findByArtist('Jaguars')); 
 //Passing artist that exists twice as argument.
-console.log('findByArtist() Results:', findByArtist('Magical Elves')); 
+console.log('findByArtist() - Should expect 2 albims by Magical Elves', findByArtist('Magical Elves')); 
 
-//Stretch Goal
-function search( criteria, trackName ) {
+
+//Stretch Goals
+function search( criteria ) {
 
     let array = [];
     if (criteria == undefined) {
+        console.log('No argument passed.');
         return collection;
-    } else if ( trackName != undefined ) {
+    } else if ( criteria.track != undefined ) {
         for (const album of collection) {
             for (const track of album.tracks) {
-                if (track.trackName == trackName) {
+                if (track.trackName == criteria.track) {
                     array.push(album);
                 }
             }
         }
+        console.log('album found using track name.');
         return array;
     } else {
         for (const album of collection) {
@@ -83,22 +88,28 @@ function search( criteria, trackName ) {
                 array.push(album);
             }
         }
+        console.log('album found using arist and year pubished criteria.');
         return array;
     }
 }
 
-let criteria = {
+let criteria0 = {
+    artist: 'Unknown Artist', //Artist and track doesn't exist in collection array so search()
+    yearPublished: '1957',    // - should return empty array.
+    track: 'Unknown Song', 
+}
+let criteria1 = {
     artist: 'Ray Charles',
     yearPublished: '1957',
-    tracks: ['SONG NAME'],
+    track: 'Best Song Ever' //Track property exists so the search() should find an album based on track name.
 }
-
-
+let criteria2 = {           
+    artist: 'Ray Charles',
+    yearPublished: '1957', //No 'Track' propery was given, so the search() should return album based on arist
+}                          // - and year published criteria.
 
 //Testing
-console.log( search(criteria, 'SONG NAME'));
-console.log( search());
-// console.log('search() - expect empty array:', search('Fantasy Gnomes', '2011', 'Pears'));
-// console.log('search() - no arguments given, should expect whole collection array:', search());
-// console.log('search() - expect array with album "Green Trees" because "Apples" track was found:', search('Fantasy Gnomes', '2011', 'Apples'));
-
+console.log('Search(0 - Should return whole collections array:', search());
+console.log('Search() - Should expect empty array:', search(criteria0));
+console.log('Search() - Should expect Ray Charles Album found by trackname:', search(criteria1));
+console.log('Search() - Should expect Ray Charles Album found by artist and year published criteria:', search(criteria2));
